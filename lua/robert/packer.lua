@@ -28,9 +28,9 @@ return require('packer').startup(function(use)
   use('tpope/vim-fugitive')
 
   use {
-	  "williamboman/mason.nvim",
-	  "williamboman/mason-lspconfig.nvim",
-	  "neovim/nvim-lspconfig",
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+      "neovim/nvim-lspconfig",
   }
 
   use {
@@ -50,4 +50,16 @@ return require('packer').startup(function(use)
   }
   use ('preservim/nerdcommenter')
   use ('github/copilot.vim')
+
+  -- nvim v0.7.2
+  use({
+      "kdheepak/lazygit.nvim",
+      requires = {
+          "nvim-telescope/telescope.nvim",
+          "nvim-lua/plenary.nvim",
+      },
+      config = function()
+          require("telescope").load_extension("lazygit")
+      end,
+  })
 end)
