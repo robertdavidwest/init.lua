@@ -32,7 +32,10 @@ return require('packer').startup(function(use)
       "williamboman/mason-lspconfig.nvim",
       "neovim/nvim-lspconfig",
   }
-
+  use {
+      'nvimtools/none-ls.nvim',
+      'jay-babu/mason-null-ls.nvim'
+  }
   use {
 	  'VonHeikemen/lsp-zero.nvim',
 	  branch = 'v3.x',
