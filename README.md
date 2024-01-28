@@ -4,6 +4,8 @@ My neovim configuration
 ### Pre-Requisites
 
 * `$ brew install ripgrep`
+* `$ brew install black`
+* `$ brew install python-lsp-server`
 
 ### Setup
 
