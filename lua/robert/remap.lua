@@ -39,5 +39,13 @@ vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
 
-vim.keymap.set("n", "<leader>%", vim.cmd.vsplit)
+vim.keymap.set("n", "<leader>%", function()
+    vim.cmd.vsplit()
+    vim.cmd.Ex()
+end)
+
 vim.keymap.set("n", "<leader>\"", vim.cmd.split)
+
+vim.keymap.set("n", "<leader>m", function()
+    vim.lsp.buf.format()
+end)
