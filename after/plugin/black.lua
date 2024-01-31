@@ -1,5 +1,5 @@
 require("mason-null-ls").setup({
-    ensure_installed = { "black" }
+    ensure_installed = { "black", "tsserver" }
 })
 
 local null_ls = require("null-ls")
@@ -10,6 +10,3 @@ null_ls.setup({
     },
 })
 
-vim.keymap.set("n", "<leader>m", function()
-    vim.lsp.buf.format()
-end)
