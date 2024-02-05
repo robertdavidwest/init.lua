@@ -49,3 +49,13 @@ vim.keymap.set("n", "<leader>\"", vim.cmd.split)
 vim.keymap.set("n", "<leader>m", function()
     vim.lsp.buf.format()
 end)
+
+
+vim.keymap.set("n", "<leader>ip", function()
+    vim.cmd.terminal("/opt/homebrew/bin/ipython")
+end)
+
+vim.keymap.set("n", "<leader>p", function()
+    vim.cmd.split()
+    vim.cmd.terminal("/opt/homebrew/bin/python3 main.py")
+end)
