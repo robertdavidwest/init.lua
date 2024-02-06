@@ -59,3 +59,10 @@ vim.keymap.set("n", "<leader>p", function()
     vim.cmd.split()
     vim.cmd.terminal("/opt/homebrew/bin/python3 main.py")
 end)
+
+vim.keymap.set("n", "<leader>t", function()
+    vim.cmd.split()
+    vim.cmd.terminal()
+end)
+
+
