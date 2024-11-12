@@ -18,7 +18,7 @@ end)
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  ensure_installed = {'lua_ls', 'quick_lint_js', 'tsserver', 'pylsp', 'eslint', 'sqlls', 'jsonls'},
+  ensure_installed = {'lua_ls', 'quick_lint_js', 'pylsp', 'eslint', 'sqlls', 'jsonls'},
   handlers = {
     lsp_zero.default_setup,
     lua_ls = function()
