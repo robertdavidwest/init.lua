@@ -1,7 +1,15 @@
+local default_opts = { noremap = true }
+
+vim.keymap.set({ "n" }, "<leader>jk", "<C-\\><C-N>", default_opts)
+vim.keymap.set({ "n" }, "<C-j>", "<cmd>wincmd j<cr>", default_opts)
+vim.keymap.set({ "n" }, "<C-k>", "<cmd>wincmd k<cr>", default_opts)
+vim.keymap.set({ "n" }, "<C-h>", "<cmd>wincmd h<cr>", default_opts)
+vim.keymap.set({ "n" }, "<C-l>", "<cmd>wincmd l<cr>", default_opts)
+
+
 vim.keymap.set("n", "<leader>vv", vim.cmd.Ex)
 
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv") vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 vim.keymap.set("n", "J", "mzJ`z")
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
