@@ -5,7 +5,7 @@ My neovim configuration
 
 * `$ brew install ripgrep`
 * `$ brew install black`
-* `$ brew install python-lsp-server`
+* Install Node.js (for LSP servers): `$ brew install node`
 
 ### Environment Variables
 
@@ -25,9 +25,15 @@ My neovim configuration
     ```
 
 * Add `alias vim=nvim` to your `~/.zshrc`
-* `cd` into this repo and run `$ bash dev`
-* Run `$ vim lua/robert/packer.lua`
-* Then in neovim run `:so`
-* then `:PackerSync` to install all packages
+* Clone this repo to `~/.config/nvim` or symlink it there
+* Open Neovim - it should automatically load packer configuration
+* Run `:PackerSync` to install all packages
+* Run `:Mason` and install LSP servers:
+  - `lua_ls` (Lua Language Server)
+  - `jsonls` (JSON Language Server)
+  - `pylsp` (Python LSP Server)
+  - `eslint` (ESLint Language Server)
+  - Any other LSP servers you need
+* Restart Neovim
 
-Now you're configuration should be fully implemented
+Now your configuration should be fully implemented

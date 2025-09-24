@@ -17,16 +17,31 @@ lsp_zero.on_attach(function(_, bufnr)
 end)
 
 require('mason').setup({})
-require('mason-lspconfig').setup({
-  ensure_installed = {'lua_ls', 'quick_lint_js', 'pylsp', 'eslint', 'sqlls', 'jsonls'},
-  handlers = {
-    lsp_zero.default_setup,
-    lua_ls = function()
-      local lua_opts = lsp_zero.nvim_lua_ls()
-      require('lspconfig').lua_ls.setup(lua_opts)
-    end,
+-- Using new vim.lsp.config API (Neovim 0.11+)
+vim.lsp.config.lua_ls = lsp_zero.nvim_lua_ls()
+vim.lsp.config.jsonls = {}
+vim.lsp.config.pylsp = {
+  settings = {
+    pylsp = {
+      plugins = {
+        pycodestyle = {
+          maxLineLength = 79
+        },
+        black = {
+          enabled = true,
+          line_length = 79
+        },
+        autopep8 = {
+          enabled = false
+        },
+        yapf = {
+          enabled = false
+        }
+      }
+    }
   }
-})
+}
+vim.lsp.config.eslint = {}
 
 
 local cmp = require('cmp')

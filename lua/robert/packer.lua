@@ -27,11 +27,7 @@ return require('packer').startup(function(use)
   use('mbbill/undotree')
   use('tpope/vim-fugitive')
 
-  use {
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
-    "neovim/nvim-lspconfig",
-  }
+
   use {
     'nvimtools/none-ls.nvim',
     'jay-babu/mason-null-ls.nvim'
@@ -40,16 +36,16 @@ return require('packer').startup(function(use)
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v3.x',
     requires = {
-      --- Uncomment these if you want to manage LSP servers from neovim
+      -- Mason plugins
       { 'williamboman/mason.nvim' },
-      'williamboman/mason-lspconfig.nvim' },
-
-    -- LSP Support
-    { 'neovim/nvim-lspconfig' },
-    -- Autocompletion
-    { 'hrsh7th/nvim-cmp' },
-    { 'hrsh7th/cmp-nvim-lsp' },
-    { 'L3MON4D3/LuaSnip' },
+      { 'williamboman/mason-lspconfig.nvim' },
+      -- LSP Support
+      { 'neovim/nvim-lspconfig' },
+      -- Autocompletion
+      { 'hrsh7th/nvim-cmp' },
+      { 'hrsh7th/cmp-nvim-lsp' },
+      { 'L3MON4D3/LuaSnip' },
+    }
   }
   use('preservim/nerdcommenter')
   use('github/copilot.vim')
@@ -107,14 +103,27 @@ return require('packer').startup(function(use)
     requires = { { "nvim-lua/plenary.nvim" }, { "nvim-telescope/telescope.nvim" } },
   }
 
-  --use {
-    --"nvim-neo-tree/neo-tree.nvim",
-    --branch = "v3.x",
-    --requires = {
-      --"nvim-lua/plenary.nvim",
-      --"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-      --"MunifTanjim/nui.nvim",
-      ---- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
-    --}
-  --}
+  use {
+  "supermaven-inc/supermaven-nvim",
+  config = function()
+    require("supermaven-nvim").setup({
+      keymaps = {
+        accept_suggestion = "<C-k>",
+        clear_suggestion = "<C-]>",
+        accept_word = "<C-j>",
+      },
+      ignore_filetypes = { cpp = true }, -- or { "cpp", }
+      color = {
+        suggestion_color = "#ffffff",
+        cterm = 244,
+      },
+      log_level = "info", -- set to "off" to disable logging completely
+      disable_inline_completion = false, -- disables inline completion for use with cmp
+      disable_keymaps = false, -- disables built in keymaps for more manual control
+      condition = function()
+        return false
+      end -- condition to check for stopping supermaven, `true` means to stop supermaven when the condition is true.
+    })
+    end,
+  }
 end)
