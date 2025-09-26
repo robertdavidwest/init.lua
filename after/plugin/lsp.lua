@@ -14,34 +14,55 @@ lsp_zero.on_attach(function(_, bufnr)
   vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
   vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+  vim.keymap.set("n", "<leader>f", function() vim.lsp.buf.format() end, opts)
 end)
 
 require('mason').setup({})
--- Using new vim.lsp.config API (Neovim 0.11+)
-vim.lsp.config.lua_ls = lsp_zero.nvim_lua_ls()
-vim.lsp.config.jsonls = {}
-vim.lsp.config.pylsp = {
+-- Manual LSP setup
+require('lspconfig').lua_ls.setup(lsp_zero.nvim_lua_ls())
+require('lspconfig').jsonls.setup({})
+require('lspconfig').pylsp.setup({
   settings = {
     pylsp = {
       plugins = {
+        -- Linting - these catch errors and undefined variables
         pycodestyle = {
-          maxLineLength = 79
-        },
-        black = {
           enabled = true,
-          line_length = 79
+          maxLineLength = 88,
+          ignore = {} -- Don't ignore any warnings
         },
-        autopep8 = {
-          enabled = false
+        pyflakes = {
+          enabled = true -- This should catch undefined variables
         },
-        yapf = {
-          enabled = false
-        }
+        pylint = { enabled = true },
+        mccabe = { enabled = true, threshold = 15 },
+
+        -- Formatting
+        autopep8 = { enabled = false },
+        black = { enabled = true, line_length = 88 },
+        yapf = { enabled = false },
+
+        -- Import sorting
+        pyls_isort = { enabled = true },
+
+        -- Type checking
+        pylsp_mypy = { enabled = false },
+
+        -- Rope for refactoring
+        rope_completion = { enabled = true },
+        rope_autoimport = { enabled = true },
+
+        -- Ensure Jedi is enabled for comprehensive analysis
+        jedi_completion = { enabled = true },
+        jedi_hover = { enabled = true },
+        jedi_references = { enabled = true },
+        jedi_signature_help = { enabled = true },
+        jedi_symbols = { enabled = true },
       }
     }
   }
-}
-vim.lsp.config.eslint = {}
+})
+require('lspconfig').eslint.setup({})
 
 
 local cmp = require('cmp')

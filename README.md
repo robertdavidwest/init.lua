@@ -5,6 +5,7 @@ My neovim configuration
 
 * `$ brew install ripgrep`
 * `$ brew install black`
+* Install Python linting tools: `$ pip install ruff flake8 black python-lsp-server[all]`
 * Install Node.js (for LSP servers): `$ brew install node`
 
 ### Environment Variables
@@ -33,6 +34,7 @@ My neovim configuration
   - `jsonls` (JSON Language Server)
   - `pylsp` (Python LSP Server)
   - `eslint` (ESLint Language Server)
+  - `black` (Python formatter - for none-ls integration)
   - Any other LSP servers you need
 * Restart Neovim
 
