@@ -18,10 +18,11 @@ lsp_zero.on_attach(function(_, bufnr)
 end)
 
 require('mason').setup({})
--- Manual LSP setup
-require('lspconfig').lua_ls.setup(lsp_zero.nvim_lua_ls())
-require('lspconfig').jsonls.setup({})
-require('lspconfig').pylsp.setup({
+
+-- Modern LSP setup using vim.lsp.config
+vim.lsp.config.lua_ls = lsp_zero.nvim_lua_ls()
+vim.lsp.config.jsonls = {}
+vim.lsp.config.pylsp = {
   settings = {
     pylsp = {
       plugins = {
@@ -61,8 +62,8 @@ require('lspconfig').pylsp.setup({
       }
     }
   }
-})
-require('lspconfig').eslint.setup({})
+}
+vim.lsp.config.eslint = {}
 
 
 local cmp = require('cmp')
