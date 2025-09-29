@@ -10,6 +10,8 @@ null_ls.setup({
   sources = {
     -- Python formatting - black should work since it's already installed
     formatting.black,
+    -- JSON formatting
+    formatting.prettier.with({ filetypes = { "json" } }),
   },
 
   -- Format on save (optional)

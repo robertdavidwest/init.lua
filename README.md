@@ -29,12 +29,13 @@ My neovim configuration
 * Clone this repo to `~/.config/nvim` or symlink it there
 * Open Neovim - it should automatically load packer configuration
 * Run `:PackerSync` to install all packages
-* Run `:Mason` and install LSP servers:
+* Run `:Mason` and install LSP servers and formatters:
   - `lua_ls` (Lua Language Server)
   - `jsonls` (JSON Language Server)
   - `pylsp` (Python LSP Server)
   - `eslint` (ESLint Language Server)
   - `black` (Python formatter - for none-ls integration)
+  - `prettier` (JSON/JS/TS formatter - for none-ls integration)
   - Any other LSP servers you need
 * Restart Neovim
 

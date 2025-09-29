@@ -21,7 +21,26 @@ require('mason').setup({})
 
 -- Modern LSP setup using vim.lsp.config
 vim.lsp.config.lua_ls = lsp_zero.nvim_lua_ls()
-vim.lsp.config.jsonls = {}
+-- JSON LSP configuration with optional schemastore
+local jsonls_settings = {
+  json = {
+    validate = { enable = true },
+    format = { enable = true }
+  }
+}
+
+-- Try to load schemastore if available
+local ok, schemastore = pcall(require, 'schemastore')
+if ok then
+  jsonls_settings.json.schemas = schemastore.json.schemas()
+end
+
+vim.lsp.config.jsonls = {
+  settings = jsonls_settings
+}
+
+-- Enable the JSON LSP server for JSON files
+vim.lsp.enable('jsonls')
 vim.lsp.config.pylsp = {
   settings = {
     pylsp = {
