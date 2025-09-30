@@ -29,6 +29,7 @@ My neovim configuration
 * Clone this repo to `~/.config/nvim` or symlink it there
 * Open Neovim - it should automatically load packer configuration
 * Run `:PackerSync` to install all packages
+  - If `markdown-preview.nvim` fails to install, run `:call mkdp#util#install()` in neovim
 * Run `:Mason` and install LSP servers and formatters:
   - `lua_ls` (Lua Language Server)
   - `jsonls` (JSON Language Server)
